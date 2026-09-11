@@ -26,6 +26,7 @@ Esses scripts destinam a série de notebooks que são distribuidos nas escolas p
 - Desativar lista de usuários recentes na tela de bloqueio.
 - Desativar OneDrive.
 - Nova implementação de apagamento de perfis.
+	- Usando DelProf2.
 - Política AppLocker para bloqueiar exercutavéis.
 - Remover recurso de hibernação.
 	- Corrigi bug que notebook hiberna e não volta da hibernação.
@@ -34,6 +35,7 @@ Esses scripts destinam a série de notebooks que são distribuidos nas escolas p
 - Desligar notebook quando ele estiver fechado.
 - Ativar economia de energia em 30%.
 - Remoção da opção de alto desempenho no gereciamento de energia.
+- Permitir e mostrar apenas a rede "SEDUC-MAQ".
 
 ### Notebooks e Computadores Administrativos
 
