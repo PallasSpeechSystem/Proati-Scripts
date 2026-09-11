@@ -16,13 +16,32 @@ Esses scripts destinam a série de notebooks que são distribuidos nas escolas p
 3. Notebooks e Computadores Administrativos:
     1. Multilaser Ultra UL150.
     2. Lenovo ThinkCentre M75S.
-  
 
 ## O que cada script faz
 
 ### Positivo Sala de Aula
 
-1. Alterar tela de bloqueio com imagem que auxiliar como é o acesso para os alunos.
-2. Desativar efeito de transparência na tela de bloqueio.
-3. Desativar lista de usuários recentes na tela de bloqueio.
-4. 
+- Alterar tela de bloqueio com imagem que auxiliar como é o acesso para os alunos.
+- Desativar efeito de transparência na tela de bloqueio.
+- Desativar lista de usuários recentes na tela de bloqueio.
+- Desativar OneDrive.
+- Nova implementação de apagamento de perfis.
+- Política AppLocker para bloqueiar exercutavéis.
+- Remover recurso de hibernação.
+	- Corrigi bug que notebook hiberna e não volta da hibernação.
+- Aceleração da animação da tela de login.
+- Desativar Windows Hello.
+- Desligar notebook quando ele estiver fechado.
+- Ativar economia de energia em 30%.
+- Remoção da opção de alto desempenho no gereciamento de energia.
+
+### Notebooks e Computadores Administrativos
+
+- Ativar função de atualização automática.
+
+### Notebooks Avançados/Profissionalizante
+
+- Ativar função de atualização automática.
+- Instalação dos programas do Ensino Profissionalizante.
+
+
