@@ -1,3 +1,10 @@
+REM Fontes:
+REM 1. https://ss64.com/nt/chcp.html
+REM 2. https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/chcp
+REM Objetivo: Mostrar corrtamente as palavras na mensagem do shutdown
+
+chcp 860
+
 REM Deletar usuário anos_iniciais
 
 net user anos_iniciais /delete
@@ -25,7 +32,7 @@ powershell -Command "$t = Get-ScheduledTask -TaskName 'Limpeza Perfis Inativos';
 REM Fontes:
 REM 1: https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/netsh-wlan
 REM 2: https://www.tenforums.com/tutorials/3562-add-remove-wireless-network-filter-windows-10-a.html
-REM Objetivo: Bloqueia a possibilidade de conectar em qualquer WI-Fi que não seja SEDUC-MAQ
+REM Objetivo: Bloqueia a possibilidade de conectar em qualquer WI-FI que não seja SEDUC-MAQ
 netsh wlan add filter permission=allow ssid="SEDUC-MAQ" networktype=infrastructure
 netsh wlan add filter permission=denyall networktype=infrastructure
 netsh wlan set blockednetworks display=hide networktype=infrastructure
@@ -86,7 +93,7 @@ REM Objetivo: Acelerar tela de login. e Desativa Windows Hello.
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableFirstLogonAnimation /t REG_DWORD /d 00000000 /f
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Settings" /v AllowSignInOptions /t REG_DWORD /d 00000000 /f
 
-REM Fontes
+REM Fontes:
 REM 1. https://www.reddit.com/r/techsupport/comments/125qacg/setting_a_default_lock_screen_login_screen/
 REM 2. https://www.elevenforum.com/t/enable-or-disable-acrylic-blur-effect-on-sign-in-screen-background-in-windows-11.1117/
 REM Objetivo: Definir tela de bloqueio personalizada para auxiliar login, e desativar efeito de transparencia na tela de login.
@@ -98,8 +105,34 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Personaliz
 
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System" /v DisableAcrylicBackgroundOnLogon /t REG_DWORD /d 00000001 /f
 
+REM Fontes:
+REM 1. https://www.elevenforum.com/t/enable-or-disable-dont-display-last-signed-in-user-on-sign-in-screen-in-windows-11.17256/
+REM Objetivo: Não mostrar lista de usuários recentes na tela de bloqueio.
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DontDisplayLastUserName" /t REG_DWORD /d "00000001" /f
 
+REM Fontes:
+REM 1. https://www.elevenforum.com/t/enable-or-disable-widgets-on-lock-screen-in-windows-11.33140/
+REM Objetivo: Desativar widgets na tela de bloqueio.
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lock Screen" /v "LockScreenWidgetsEnabled" /t REG_DWORD /d 00000000 /f
 
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DontDisplayLastUserName" /t REG_WORD /d "00000001" /f
+REM Fontes: 
+REM 1. https://www.elevenforum.com/t/check-enable-or-disable-trim-support-for-ssd-drives-in-windows-11.43525/
+REM Objetivo: Ativar suporte ao TRIM ao sistema.
+fsutil behavior set disabledeletenotify 0​
 
-shutdown -t 10 /r /c "Reiniciado para aplicar as alterações."
+REM Fontes:
+REM 1. https://www.elevenforum.com/t/add-or-remove-recommended-section-on-start-menu-in-windows-11.21508/
+REM 2. https://www.elevenforum.com/t/add-or-remove-all-apps-section-on-start-menu-in-windows-11.9293/
+REM Objetivo: Remover seção de recomendados no menu inicial e seção de todos.
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecommendedSection" /t REG_DWORD /d 00000001
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start" /v "ShowAllAppsSection" /t REG_DWORD /d 00000000
+
+REM Fontes:
+REM 1. https://www.elevenforum.com/t/turn-on-or-off-autoendtasks-at-sign-out-restart-shut-down-in-windows-11.8283/
+REM 2. https://www.reddit.com/r/sysadmin/comments/1p6bewi/autoendtasks_doesnt_work_any_more_in_windows_11/?show=original 
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "AutoEndTasks" /t REG_DWORD /d 00000001 /f
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "HungAppTimeout" /t REG_SZ /d 2000 /f
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t REG_SZ /d 5000 /f
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "WaitToKillServiceTimeout" /t REG_SZ /d 5000 /f
+
+shutdown -t 10 /r /c "Reiniciando para aplicar as alterações."
