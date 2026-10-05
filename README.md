@@ -36,6 +36,9 @@ Esses scripts destinam a série de notebooks que são distribuidos nas escolas p
 - Ativar economia de energia em 30%.
 - Remoção da opção de alto desempenho no gereciamento de energia.
 - Permitir e mostrar apenas a rede "SEDUC-MAQ".
+- Força encerramento de serviços e programas ao desligar ou reiniciar o notebook.
+- Força desligamento forçado.
+	- Bug conhecido: Ao fecha a tampa, o notebook ficar em loop infinito na tela de "desligando..." fazendo o notebook aquencer.
 
 ### Notebooks e Computadores Administrativos
 

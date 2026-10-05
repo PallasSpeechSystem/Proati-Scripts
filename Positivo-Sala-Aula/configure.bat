@@ -57,6 +57,8 @@ powercfg -setacvalueindex a1841308-3541-4fab-bc81-f71556f20b4a sub_buttons LIDAC
 powercfg -setdcvalueindex a1841308-3541-4fab-bc81-f71556f20b4a sub_buttons LIDACTION 3
 powercfg -setActive 381b4222-f694-41f0-9685-ff5bb260df2e
 
+powercfg -setdcvalueindex SCHEME_CURRENT 381b4222-f694-41f0-9685-ff5bb260df2e 833a6b62-dfa4-46d1-82f8-e09e34d029d6 1
+powercfg -setdcvalueindex SCHEME_CURRENT a1841308-3541-4fab-bc81-f71556f20b4a 833a6b62-dfa4-46d1-82f8-e09e34d029d6 1
 
 REM Fontes: 
 REM 1. https://superuser.com/questions/1619455/how-to-enable-disable-battery-saver-with-powershell
@@ -130,6 +132,7 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start" /v "
 REM Fontes:
 REM 1. https://www.elevenforum.com/t/turn-on-or-off-autoendtasks-at-sign-out-restart-shut-down-in-windows-11.8283/
 REM 2. https://www.reddit.com/r/sysadmin/comments/1p6bewi/autoendtasks_doesnt_work_any_more_in_windows_11/?show=original 
+REM Objetivo: Excerrar qualquer programa ou serviços quando estiver desligando, reiniciado ou sign-out.
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "AutoEndTasks" /t REG_DWORD /d 00000001 /f
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "HungAppTimeout" /t REG_SZ /d 2000 /f
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t REG_SZ /d 5000 /f
